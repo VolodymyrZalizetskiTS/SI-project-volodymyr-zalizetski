@@ -164,7 +164,6 @@ function step() {
     y: (head.y + game.dir.y + GRID) % GRID,
   };
 
-  // check if hit self
   if (game.body.slice(0, -1).some(s => s.x === next.x && s.y === next.y)) {
     end("Kolizja z cialem");
     return;
@@ -172,7 +171,6 @@ function step() {
 
   game.body.unshift(next);
 
-  // ate food?
   if (next.x === game.food.x && next.y === game.food.y) {
     addScore(game.score + 1);
     setFood();
