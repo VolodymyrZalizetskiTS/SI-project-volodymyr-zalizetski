@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Snake Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css.css') }}" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="shell" aria-label="Google snake style shell">
+        <header class="hud">
+          <div class="hud-left">
+            <h1>Snake</h1>
+          </div>
+
+          <div class="hud-right">
+            <div class="mini-stats">
+              <span>Score <strong id="score">0</strong></span>
+              <span>Best <strong id="best-score">0</strong></span>
+              <span>Time <strong id="time-left">90.0</strong>s</span>
+            </div>
+
+            <div class="buttons">
+              <button id="start-btn" type="button">Start</button>
+              <button id="reset-btn" type="button">Reset</button>
+            </div>
+          </div>
+        </header>
+
+        <div class="meta-row">
+          <form id="player-form" class="player-form">
+            <label for="nickname">Player</label>
+            <input id="nickname" name="nickname" maxlength="16" placeholder="nickname" />
+            <button type="submit">Save</button>
+          </form>
+
+          <div class="stats" aria-label="extra stats">
+            <p><span>Name:</span> <strong id="player-name">Anon</strong></p>
+            <p><span>Status:</span> <strong id="status">Gotowy</strong></p>
+            <p><span>Mode:</span> <strong id="mode">Gra</strong></p>
+            <p><span>Key:</span> <strong id="last-key">-</strong></p>
+          </div>
+        </div>
+
+        <section class="game-zone">
+          <div id="board" class="board" aria-label="Plansza snake"></div>
+        </section>
+
+        <div class="spinner" aria-hidden="true"></div>
+
+        <p id="hint" class="hint">Arrow keys move. Space boosts. P pauses.</p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js.js') }}"></script>
+  </body>
+</html>
