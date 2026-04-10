@@ -24,6 +24,11 @@ const nameEl = document.querySelector("#player-name");
 const keyEl = document.querySelector("#last-key");
 // tu siedzi tryb gry (gra / pauza / stop)
 const modeEl = document.querySelector("#mode");
+const lossScreenEl = document.querySelector("#loss-screen");
+const lossReasonEl = document.querySelector("#loss-reason");
+const lossScoreEl = document.querySelector("#loss-score");
+const lossBestEl = document.querySelector("#loss-best");
+const lossAgainBtn = document.querySelector("#loss-again-btn");
 
 // rozmiar planszy 20x20
 const GRID = 20;
@@ -243,6 +248,7 @@ function end(why) {
   clearInterval(game.loopId);
   // czyå›cimy petle timera
   clearInterval(game.timerId);
+  showLossScreen(why);
   // krotka wiadomosc dla gracza
   say(`Koniec. Wynik: ${game.score}`);
 }
@@ -332,6 +338,7 @@ function reset() {
 
 // startuje nowa runde
 function start() {
+  hideLossScreen();
   // zerujemy stan mechaniki
   reset();
   // zerujemy wynik rundy
@@ -365,6 +372,7 @@ function start() {
 
 // zatrzymuje gre i wraca do stanu "gotowy"
 function stop() {
+  hideLossScreen();
   // stop logiki
   clearInterval(game.loopId);
   // stop timera
@@ -441,8 +449,6 @@ board.addEventListener("click", e => {
   game.food = { x: idx % GRID, y: Math.floor(idx / GRID) };
   // odswiezamy plansze
   draw();
-  // dajemy feedback graczowi
-  say("Klik ustawil nowe jedzenie");
 });
 
 // reakcja na klawisze sterujace
@@ -509,3 +515,19 @@ window.addEventListener("scroll", () => {
 buildGrid();
 // ustawiamy stan startowy gry
 stop();
+
+function showLossScreen(reason) {
+  lossScoreEl.textContent = String(game.score);
+  lossBestEl.textContent = String(game.best);
+  lossScreenEl.classList.add("visible");
+  lossScreenEl.setAttribute("aria-hidden", "false");
+}
+
+function hideLossScreen() {
+  if (!lossScreenEl) return;
+  lossScreenEl.classList.remove("visible");
+  lossScreenEl.setAttribute("aria-hidden", "true");
+}
+if (lossAgainBtn) {
+  lossAgainBtn.addEventListener("click", start);
+}

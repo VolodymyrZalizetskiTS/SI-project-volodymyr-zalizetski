@@ -59,6 +59,16 @@
       </section>
     </main>
 
+    <section id="loss-screen" class="loss-screen" aria-hidden="true">
+      <div class="loss-card" role="dialog" aria-modal="true" aria-labelledby="loss-title">
+        <h2 id="loss-title">Koniec gry</h2>
+        <p><span>Powod:</span> <strong id="loss-reason">-</strong></p>
+        <p><span>Wynik:</span> <strong id="loss-score">0</strong></p>
+        <p><span>Rekord:</span> <strong id="loss-best">0</strong></p>
+        <button id="loss-again-btn" type="button">Zagraj ponownie</button>
+      </div>
+    </section>
+
     <script src="{{ url_for('static', filename='js.js') }}"></script>
   </body>
 </html>
