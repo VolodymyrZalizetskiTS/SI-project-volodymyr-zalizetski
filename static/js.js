@@ -435,14 +435,6 @@ form.addEventListener("submit", e => {
 board.addEventListener("click", e => {
   // bierzemy najblizsza komorke pod kursorem
   const cell = e.target.closest(".grid-cell");
-  // jak klik nie byl w komorke, konczymy
-  if (!cell) return;
-
-  // czyå›cimy stare oznaczenie "marked"
-  document.querySelectorAll(".grid-cell").forEach(c => c.classList.remove("marked"));
-  // oznaczamy aktualnie kliknieta komorke
-  cell.classList.add("marked");
-
   // czytamy indeks kliknietej komorki
   const idx = Number(cell.dataset.index);
   // zamieniamy indeks na (x,y) i ustawiamy jablko
