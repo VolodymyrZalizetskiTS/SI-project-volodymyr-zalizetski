@@ -217,6 +217,10 @@ button:hover {
 
 .grid-cell.head {
   background: var(--snake-head) !important;
+  box-shadow: 
+      0 0 12px rgba(255, 255, 255, var(--glow)),
+      0 0 20px var(--snake-head);
+  transition: box-shadow 0.08s linear;
 }
 
 .grid-cell.food {

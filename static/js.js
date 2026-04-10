@@ -43,10 +43,6 @@ let game = {
   ],
   // aktualny kierunek ruchu
   dir: { x: 1, y: 0 },
-  // kierunek "na nastepny tick" po klawiszu
-  nextDir: { x: 1, y: 0 },
-  // pozycja jablka
-  food: { x: 14, y: 10 },
   // aktualny wynik
   score: 0,
   // rekord sesji
@@ -326,8 +322,6 @@ function reset() {
   ];
   // kierunek startowy
   game.dir = { x: 1, y: 0 };
-  // bufor kierunku tez na prawo
-  game.nextDir = { x: 1, y: 0 };
   // domyslna predkosc
   game.speed = 140;
   // zerujemy narastajacy czas pauz
